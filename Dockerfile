@@ -1,5 +1,29 @@
 FROM ruby:2.7.1
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+RUN apk add --update --no-cache \
+      binutils-gold \
+      build-base \
+      curl \
+      file \
+      g++ \
+      gcc \
+      git \
+      less \
+      libstdc++ \
+      libffi-dev \
+      libc-dev \
+      linux-headers \
+      libxml2-dev \
+      libxslt-dev \
+      libgcrypt-dev \
+      make \
+      netcat-openbsd \
+      nodejs \
+      openssl \
+      pkgconfig \
+      postgresql-dev \
+      python \
+      tzdata \
+      yarn
 RUN mkdir /server_viewer_api
 WORKDIR /server_viewer_api
 COPY Gemfile /server_viewer_api/Gemfile
@@ -8,9 +32,9 @@ RUN bundle install
 COPY . /server_viewer_api
 
 # Add a script to be executed every time the container starts.
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+# COPY entrypoint.sh /usr/bin/
+# RUN chmod +x /usr/bin/entrypoint.sh
+# ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
 # Start the main process.
