@@ -34,6 +34,7 @@ group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
   gem 'rubocop'
+  gem 'reek'
 end
 
 group :test do

@@ -16,7 +16,7 @@ module Api
     private
 
     def set_server
-      @server = Server.find(server_params[:id])
+      @server ||= Server.find(server_params[:id])
     end
 
     def server_params

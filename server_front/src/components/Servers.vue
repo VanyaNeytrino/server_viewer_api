@@ -53,13 +53,7 @@
     }
   },
   created() {
-    axios.get('http://localhost:3000/api/servers') 
-    .then(response => {
-          this.servers = response.data['data']})
-    .catch(e => {
-           console.log("ERR", e),
-           this.error.push(e)
-      })
+    this.get_servers()
     },
 
     methods: {
@@ -68,6 +62,15 @@
         this.selected = server['attributes']['bandwidths']
 
       },
+      get_servers: function () {
+        axios.get('http://localhost:3000/api/servers') 
+            .then(response => {
+                  this.servers = response.data['data']})
+            .catch(e => {
+                  console.log("ERR", e),
+                  this.error.push(e)
+            })
+      },
       delete_server: function (id) {
         axios.delete('http://localhost:3000/api/servers/' + id)
         .then(response => {
@@ -75,6 +78,7 @@
         .catch(e => {
                console.log("ERR", e),
                this.error.push(e)
+        this.get_servers();
         })
       }
     }
