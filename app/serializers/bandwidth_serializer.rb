@@ -2,5 +2,5 @@
 
 class BandwidthSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :server_id, :value, :inteface_name, :value_id
+  attributes :server_id, :value, :interface_name, :value_id
 end

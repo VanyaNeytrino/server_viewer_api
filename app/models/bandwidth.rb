@@ -6,6 +6,7 @@ class Bandwidth < ApplicationRecord
   validate :interface_name_uniq
 
   def interface_name_uniq
+    return true unless server
     repeted_hash = server.bandwidths.map(&:interface_name)
                          .each_with_object(Hash.new(0)) { |o, h| h[o] += 1 }
 

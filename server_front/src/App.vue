@@ -7,11 +7,12 @@
 <script>
 import Vue from 'vue'
 import Servers from './components/Servers.vue'
-import { MdTable } from 'vue-material/dist/components'
+import { MdTable, MdButton } from 'vue-material/dist/components'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 
 Vue.use(MdTable)
+Vue.use(MdButton)
 
 export default {
   name: 'App',
